@@ -9,3 +9,7 @@ import "channels"
 
 Rails.start()
 ActiveStorage.start()
+
+import 'bootstrap'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import '../stylesheets/application.scss'
