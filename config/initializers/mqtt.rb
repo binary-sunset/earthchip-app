@@ -16,7 +16,7 @@ Thread.new do
 
     case measurement
     when 'humidity'
-      DeviceTemperature.create!(device_id: device_id, value: message.to_f, created_at: Time.now)
+      DeviceHumidity.create!(device_id: device_id, value: message.to_f, created_at: Time.now)
     when 'light'
       DeviceLight.create!(device_id: device_id, value: message.to_f, created_at: Time.now)
     else

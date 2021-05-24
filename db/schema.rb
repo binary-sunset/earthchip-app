@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 2021_05_24_162502) do
     t.index ["device_id"], name: "index_device_lights_on_device_id"
   end
 
-  create_table "device_temperatures", force: :cascade do |t|
+  create_table "device_humidities", force: :cascade do |t|
     t.bigint "device_id", null: false
     t.float "value"
     t.datetime "created_at"
-    t.index ["device_id"], name: "index_device_temperatures_on_device_id"
+    t.index ["device_id"], name: "index_device_humidities_on_device_id"
   end
 
   create_table "devices", force: :cascade do |t|
@@ -37,5 +37,5 @@ ActiveRecord::Schema.define(version: 2021_05_24_162502) do
   end
 
   add_foreign_key "device_lights", "devices"
-  add_foreign_key "device_temperatures", "devices"
+  add_foreign_key "device_humidities", "devices"
 end
