@@ -4,23 +4,13 @@ Thread.new do
     port: ENV["mqtt_port"]
   )
 
-  client.subscribe('+/humidity', '+/light')
-  client.get do |topic, message|
-    device_id = topic.split("/").first
+  client.subscribe('+/humidity')
 
-    unless Device.exists?(device_id)
-      Device.create!(id: device_id, alias: device_id)
-    end
+  client.get do |topic, value|
+    device_id = topic.split('/').first
 
-    measurement = topic.split('/').last
+    device = Device.find_or_create_by(alias: device_id)
 
-    case measurement
-    when 'humidity'
-      DeviceHumidity.create!(device_id: device_id, value: message.to_f, created_at: Time.now)
-    when 'light'
-      DeviceLight.create!(device_id: device_id, value: message.to_f, created_at: Time.now)
-    else
-      raise 'Measurement not defined'
-    end
+    DeviceHumidity.create!(device: device, value: value.to_f, created_at: Time.now)
   end
 end

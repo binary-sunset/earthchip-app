@@ -1,0 +1,6 @@
+<h1>This are all your devices</h1>
+
+<%= turbo_stream_from :devices %>
+<%= turbo_frame_tag :devices do %>
+  <%= render @devices %>
+<% end %>

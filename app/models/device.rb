@@ -1,17 +1,9 @@
 class Device < ApplicationRecord
-  has_many :humidities, class_name: :DeviceHumidity
-  has_many :lights, class_name: :DeviceLight
+  has_many :humidities, class_name: :DeviceHumidity, dependent: :destroy
 
+  broadcasts_to ->(_device) { 'devices' }, target: :devices
 
   def last_humidity
-    humidities.last!.value
-  rescue StandardError
-    'N/A'
-  end
-
-  def last_light
-    lights.last!.value
-  rescue StandardError
-    'N/A'
+    humidities.last
   end
 end

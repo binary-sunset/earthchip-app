@@ -1,6 +1,5 @@
-<h1>This are all your devices</h1>
-
-<% @devices.each do |device| %>
+<%= turbo_frame_tag device do %>
+  <% last_humidity = device.last_humidity %>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">
@@ -8,10 +7,7 @@
           <%= device.alias %> <i class="bi bi-pencil"></i>
         <% end %>
       </h5>
-      <div class="card-text">
-        Humidity: <%= device.last_humidity %>
-        Light: <%= device.last_light %>
-      </div>
     </div>
   </div>
+  <%= render last_humidity, device_humidity: last_humidity %>
 <% end %>

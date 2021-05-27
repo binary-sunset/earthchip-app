@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 2021_05_24_162502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "device_lights", force: :cascade do |t|
-    t.bigint "device_id", null: false
-    t.float "value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["device_id"], name: "index_device_lights_on_device_id"
-  end
-
   create_table "device_humidities", force: :cascade do |t|
     t.bigint "device_id", null: false
     t.float "value"
@@ -30,12 +22,12 @@ ActiveRecord::Schema.define(version: 2021_05_24_162502) do
     t.index ["device_id"], name: "index_device_humidities_on_device_id"
   end
 
+
   create_table "devices", force: :cascade do |t|
     t.string "alias"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "device_lights", "devices"
   add_foreign_key "device_humidities", "devices"
 end

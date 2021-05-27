@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
+import "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
@@ -13,3 +14,4 @@ ActiveStorage.start()
 import 'bootstrap'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../stylesheets/application.scss'
+import "controllers"

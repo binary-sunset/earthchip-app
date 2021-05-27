@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'device#index'
+  root to: 'devices#index'
 
-  resources :device, only: %i[edit update]
+  resources :devices, only: %i[edit update]
 end
