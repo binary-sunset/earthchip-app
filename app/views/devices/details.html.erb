@@ -1,2 +1,10 @@
-<%#= line_chart @device.humidity_stats.group_by_day(:created_at).values %>
-Details
+<h1>Details</h1>
+<hr/>
+<h2>Light</h2>
+<%= line_chart charts_light_stats_path(@device), refresh: 10 %>
+<hr/>
+<h2>Temperature</h2>
+<%= line_chart charts_temperature_stats_path(@device), refresh: 10 %>
+<hr/>
+<h2>Humidity</h2>
+<%= line_chart charts_humidity_stats_path(@device), refresh: 10 %>

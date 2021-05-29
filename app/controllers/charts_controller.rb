@@ -2,15 +2,15 @@ class ChartsController < ApplicationController
   before_action :set_device
 
   def humidity_stats
-    render json: DeviceStatsBlueprint.render(@device.humidity_stats)
+    render json: @device.humidity_stats.group_by_minute(:created_at).average(:value)
   end
 
   def light_stats
-    render json: DeviceStatsBlueprint.render(@device.light_stats)
+    render json: @device.light_stats.group_by_minute(:created_at).average(:value)
   end
 
   def temperature_stats
-    render json: DeviceStatsBlueprint.render(@device.temperature_stats)
+    render json: @device.temperature_stats.group_by_minute(:created_at).average(:value)
   end
 
   private
