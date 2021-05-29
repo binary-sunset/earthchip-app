@@ -1,6 +1,0 @@
-<%= turbo_frame_tag "device_#{device_humidity.device.id}_last_humidity" do %>
-  <%= device_humidity.value %>%
-  <div class="card-footer">
-    Updated <%= time_ago_in_words device_humidity.created_at %> ago
-  </div>
-<% end %>

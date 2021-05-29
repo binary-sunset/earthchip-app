@@ -10,24 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_162502) do
+ActiveRecord::Schema.define(version: 2021_05_29_105247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "device_humidities", force: :cascade do |t|
+  create_table "device_stats", force: :cascade do |t|
     t.bigint "device_id", null: false
     t.float "value"
+    t.integer "measurement"
     t.datetime "created_at"
-    t.index ["device_id"], name: "index_device_humidities_on_device_id"
+    t.index ["device_id"], name: "index_device_stats_on_device_id"
   end
-
 
   create_table "devices", force: :cascade do |t|
     t.string "alias"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["alias"], name: "index_devices_on_alias", unique: true
   end
 
-  add_foreign_key "device_humidities", "devices"
+  add_foreign_key "device_stats", "devices"
 end

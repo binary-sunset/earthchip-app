@@ -1,13 +1,14 @@
 <%= turbo_frame_tag device do %>
-  <% last_humidity = device.last_humidity %>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">
         <%= link_to edit_device_path(device), class: 'text-decoration-none' do %>
-          <%= device.alias %> <i class="bi bi-pencil"></i>
+          <%= device.name %> <i class="bi bi-pencil"></i>
         <% end %>
       </h5>
+      <% [:temperature, :light, :humidity].each do |measurement| %>
+        <%= render 'device_stats/device_stats', device: device, measurement: measurement %>
+      <% end %>
     </div>
   </div>
-  <%= render last_humidity, device_humidity: last_humidity %>
 <% end %>

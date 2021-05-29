@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "device_#{device.id}_last_#{measurement}" do %>
+  <% device_stat = device.send("#{measurement}_stats").last %>
+  <% if device_stat.present? %>
+    <%= device_stat.measurement.capitalize %>
+    <%= device_stat.value %>
+    <div class="card-footer">
+      Updated <%= time_ago_in_words device_stat.created_at %> ago
+    </div>
+  <% end %>
+<% end %>

@@ -1,9 +1,23 @@
 class Device < ApplicationRecord
-  has_many :humidities, class_name: :DeviceHumidity, dependent: :destroy
+  has_many :stats, class_name: :DeviceStats, dependent: :destroy
+
+  validates_presence_of :alias
 
   broadcasts_to ->(_device) { 'devices' }, target: :devices
 
-  def last_humidity
-    humidities.last
+  def measurements
+    stats.distinct.pluck(:measurement)
+  end
+
+  def humidity_stats
+    stats.humidity
+  end
+
+  def light_stats
+    stats.light
+  end
+
+  def temperature_stats
+    stats.temperature
   end
 end
