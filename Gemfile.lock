@@ -65,6 +65,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
+    chartkick (4.0.4)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     dotenv (2.7.6)
@@ -75,6 +76,8 @@ GEM
     ffi (1.15.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.2.2)
+      activesupport (>= 5)
     hotwire-rails (0.1.3)
       rails (>= 6.0.0)
       stimulus-rails
@@ -193,7 +196,9 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
+  chartkick (~> 4.0)
   dotenv-rails (~> 2.7)
+  groupdate (~> 5.2)
   hotwire-rails (~> 0.1.3)
   jbuilder (~> 2.7)
   listen (~> 3.3)

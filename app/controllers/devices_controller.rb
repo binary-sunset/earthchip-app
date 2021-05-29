@@ -1,6 +1,6 @@
 class DevicesController < ApplicationController
 
-  before_action :set_device, only: [:show, :edit, :update, :details]
+  before_action :set_device, only: %i[show edit update details]
 
   def show
     render @device
@@ -12,10 +12,6 @@ class DevicesController < ApplicationController
 
   def edit; end
 
-  def details
-
-  end
-
   def update
     if @device.update(params.require(:device).permit(:name))
       redirect_to @device
@@ -24,10 +20,12 @@ class DevicesController < ApplicationController
     end
   end
 
-end
+  def details
+  end
 
-private
+  private
 
-def set_device
-  @device = Device.find(params[:id])
+  def set_device
+    @device = Device.find(params[:id])
+  end
 end
