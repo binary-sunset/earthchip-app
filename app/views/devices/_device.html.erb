@@ -1,9 +1,11 @@
-<%= turbo_frame_tag device do %>
+<%= turbo_frame_tag dom_id(device) do %>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">
-        <%= link_to edit_device_path(device), class: 'text-decoration-none' do %>
-          <%= device.name %> <i class="bi bi-pencil"></i>
+        <%= turbo_frame_tag "device_#{device.id}_edit" do %>
+          <%= link_to edit_device_path(device), class: 'text-decoration-none' do %>
+            <%= device.name %> <i class="bi bi-pencil"></i>
+          <% end %>
         <% end %>
       </h5>
       <% [:temperature, :light, :humidity].each do |measurement| %>

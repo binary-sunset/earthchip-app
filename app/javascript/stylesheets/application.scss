@@ -1,1 +1,5 @@
 @import "~bootstrap";
+
+.form-group {
+  @extend .mb-3
+}

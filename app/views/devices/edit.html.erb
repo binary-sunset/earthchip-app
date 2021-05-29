@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "device_#{@device.id}_edit" do %>
+  <div data-controller='scroll-into-view' class='py-2'>
+    <%= render 'form', device: @device %>
+  </div>
+<% end %>

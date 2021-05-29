@@ -1,7 +1,7 @@
 class Device < ApplicationRecord
   has_many :stats, class_name: :DeviceStats, dependent: :destroy
 
-  validates_presence_of :alias
+  validates_presence_of :alias, :name
 
   broadcasts_to ->(_device) { 'devices' }, target: :devices
 

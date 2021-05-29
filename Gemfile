@@ -29,3 +29,5 @@ gem "pg", "~> 1.2"
 gem "hotwire-rails", "~> 0.1.3"
 
 gem "redis", "~> 4.2"
+
+gem "simple_form", "~> 5.1"
