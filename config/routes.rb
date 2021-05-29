@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace 'charts' do
     scope '/:device_id' do
-      get 'humidity_stats', to: 'devices#humidity_chart'
+      get 'humidity_stats'
       get 'light_stats'
       get 'temperature_stats'
     end

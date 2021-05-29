@@ -1,13 +1,16 @@
 class ChartsController < ApplicationController
   before_action :set_device
 
-  def humidity_chart
+  def humidity_stats
+    render json: DeviceStatsBlueprint.render(@device.humidity_stats)
   end
 
-  def light_chart
+  def light_stats
+    render json: DeviceStatsBlueprint.render(@device.light_stats)
   end
 
-  def temperature_chart
+  def temperature_stats
+    render json: DeviceStatsBlueprint.render(@device.temperature_stats)
   end
 
   private

@@ -35,3 +35,7 @@ gem "simple_form", "~> 5.1"
 gem "chartkick", "~> 4.0"
 
 gem "groupdate", "~> 5.2"
+
+gem "blueprinter", "~> 0.25.3"
+
+gem "oj", "~> 3.11"
