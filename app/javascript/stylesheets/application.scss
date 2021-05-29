@@ -3,3 +3,13 @@
 .form-group {
   @extend .mb-3
 }
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}

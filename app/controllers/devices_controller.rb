@@ -1,6 +1,6 @@
 class DevicesController < ApplicationController
 
-  before_action :set_device, only: [:show, :edit, :update]
+  before_action :set_device, only: [:show, :edit, :update, :details]
 
   def show
     render @device
@@ -10,7 +10,10 @@ class DevicesController < ApplicationController
     @devices = Device.all
   end
 
-  def edit
+  def edit; end
+
+  def details
+
   end
 
   def update
