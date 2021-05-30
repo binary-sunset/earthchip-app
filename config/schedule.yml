@@ -1,0 +1,4 @@
+aggregate_data:
+  cron: "*/1 * * * *"
+  class: "AggregateDataJob"
+  queue: default
