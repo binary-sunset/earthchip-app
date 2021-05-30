@@ -1,0 +1,11 @@
+<h1>Details</h1>
+<%= link_to 'Home', root_path %>
+<hr/>
+<h2>Light</h2>
+<%= area_chart charts_light_stats_path(@device), xtitle: "Time", ytitle: "Avg. UVI", refresh: 10 %>
+<hr/>
+<h2>Temperature</h2>
+<%= area_chart charts_temperature_stats_path(@device), xtitle: "Time", ytitle: "Avg. Temperature", refresh: 10, suffix: "°C" %>
+<hr/>
+<h2>Humidity</h2>
+<%= area_chart charts_humidity_stats_path(@device), xtitle: "Time", ytitle: "Avg. Moisture", refresh: 10 %>

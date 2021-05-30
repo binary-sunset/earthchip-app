@@ -25,9 +25,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "mqtt", "~> 0.5.0"
 gem "dotenv-rails", "~> 2.7"
 gem "pg", "~> 1.2"
-
 gem "hotwire-rails", "~> 0.1.3"
-
 gem "redis", "~> 4.2"
-
 gem "simple_form", "~> 5.1"
+gem "chartkick", "~> 4.0"
+gem "groupdate", "~> 5.2"

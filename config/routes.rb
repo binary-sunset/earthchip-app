@@ -4,4 +4,12 @@ Rails.application.routes.draw do
   resources :devices, only: %i[edit update show] do
     get 'details', to: 'devices#details', on: :member
   end
+
+  namespace 'charts' do
+    scope '/:device_id' do
+      get 'humidity_stats'
+      get 'light_stats'
+      get 'temperature_stats'
+    end
+  end
 end
