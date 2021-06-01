@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  require 'sidekiq/cron/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   root to: 'devices#index'
 
   resources :devices, only: %i[edit update show] do
@@ -7,9 +11,7 @@ Rails.application.routes.draw do
 
   namespace 'charts' do
     scope '/:device_id' do
-      get 'humidity_stats'
-      get 'light_stats'
-      get 'temperature_stats'
+      get 'graph_stats'
     end
   end
 end

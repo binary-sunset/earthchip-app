@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_105247) do
+ActiveRecord::Schema.define(version: 2021_05_30_160130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aggregated_stats", force: :cascade do |t|
+    t.bigint "device_id", null: false
+    t.integer "measurement"
+    t.float "value"
+    t.string "hour_at"
+    t.index ["device_id"], name: "index_aggregated_stats_on_device_id"
+  end
 
   create_table "device_stats", force: :cascade do |t|
     t.bigint "device_id", null: false
@@ -31,5 +39,6 @@ ActiveRecord::Schema.define(version: 2021_05_29_105247) do
     t.index ["alias"], name: "index_devices_on_alias", unique: true
   end
 
+  add_foreign_key "aggregated_stats", "devices"
   add_foreign_key "device_stats", "devices"
 end

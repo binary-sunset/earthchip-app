@@ -7,6 +7,7 @@ Thread.new do
   client.subscribe('+/humidity')
   client.subscribe('+/light')
   client.subscribe('+/temperature')
+  client.subscribe('+/moisture')
 
   client.get do |topic, value|
     device_alias, measurement = topic.split('/')
@@ -19,7 +20,6 @@ Thread.new do
       DeviceStats.create!(device: device, value: value.to_f, measurement: measurement, created_at: Time.now)
     rescue StandardError => e
       Rails.logger.error "Something went wrong: #{e.inspect}"
-
     end
   end
 end
