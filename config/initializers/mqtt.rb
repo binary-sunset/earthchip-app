@@ -1,7 +1,7 @@
 Thread.new do
   client = MQTT::Client.connect(
-    host: ENV['mqtt_host'],
-    port: ENV['mqtt_port']
+    host: ENV['MQTT_HOST'],
+    port: ENV['MQTT_PORT']
   )
 
   client.subscribe('+/humidity')
