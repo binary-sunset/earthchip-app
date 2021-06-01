@@ -9,7 +9,7 @@
           <% end %>
         <% end %>
       </h5>
-      <% [:temperature, :light, :humidity].each do |measurement| %>
+      <% [:temperature, :light, :humidity, :moisture].each do |measurement| %>
         <%= render 'device_stats/device_stats', device: device, measurement: measurement %>
       <% end %>
     </div>

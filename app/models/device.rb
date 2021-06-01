@@ -8,7 +8,7 @@ class Device < ApplicationRecord
 
   validates_presence_of :alias, :name
 
-  broadcasts_to ->(_device) { 'devices' }, target: :devices
+  broadcasts_to ->(_device) { :devices }, target: :devices
 
   def measurements
     stats.distinct.pluck(:measurement)
@@ -24,6 +24,10 @@ class Device < ApplicationRecord
 
   def temperature_stats
     stats.temperature
+  end
+
+  def moisture_stats
+    stats.moisture
   end
 
   def aggregated(measurement)
