@@ -33,9 +33,6 @@ RUN bundle
 
 ENTRYPOINT ["bin/rails"]
 
-RUN bundle exec rake db:create
-RUN bundle exec rake db:migrate
-
 CMD ["s", "-b", "0.0.0.0"]
 
 EXPOSE 3000

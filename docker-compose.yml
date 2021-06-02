@@ -16,12 +16,14 @@ services:
     depends_on:
       - db
       - redis
+      - mosquitto
     build: .
     command: 'sidekiq:start'
     volumes:
       - '.:/project'
     environment:
       - REDIS_URL_SIDEKIQ=redis://redis:6379/1
+      - DATABASE_URL=postgres://postgres:password@db:5432/postgres
   #      - RAILS_ENV=production
   app:
     build: .
@@ -31,6 +33,7 @@ services:
       - db
       - redis
       - sidekiq
+      - mosquitto
     environment:
       - DATABASE_URL=postgres://postgres:password@db:5432/postgres
       - REDIS_URL=redis://redis:6379
