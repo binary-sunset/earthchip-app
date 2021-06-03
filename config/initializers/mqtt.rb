@@ -11,15 +11,8 @@ Thread.new do
 
   client.get do |topic, value|
     device_alias, measurement = topic.split('/')
+    created_at = Time.now
 
-    begin
-      device = Device.find_or_create_by!(alias: device_alias) do |d|
-        d.alias = device_alias
-        d.name = device_alias
-      end
-      DeviceStats.create!(device: device, value: value.to_f, measurement: measurement, created_at: Time.now)
-    rescue StandardError => e
-      Rails.logger.error "Something went wrong: #{e.inspect}"
-    end
+    SaveDeviceStatsJob.perform_later(device_alias, measurement, value, created_at)
   end
 end
