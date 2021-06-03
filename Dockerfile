@@ -27,12 +27,9 @@ WORKDIR /app
 COPY . /app/
 
 ENV BUNDLE_PATH /gems
+ENV RAILS_ENV production
 
 RUN yarn
 RUN bundle
 
-ENTRYPOINT ["bin/rails"]
-
-CMD ["s", "-b", "0.0.0.0"]
-
-EXPOSE 3000
+ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]

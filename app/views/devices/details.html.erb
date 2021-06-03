@@ -1,7 +1,7 @@
 <h1>Details</h1>
 <%= link_to 'Home', root_path %>
 <hr/>
-<% [:temperature, :light, :humidity, :moisture].each do |measurement| %>
+<% [:moisture, :temperature, :light, :humidity].each do |measurement| %>
   <h2><%= measurement.capitalize %></h2>
   <%= area_chart charts_graph_stats_path(@device, measurement: measurement), xtitle: measurement.capitalize, ytitle: "Avg. #{measurement.capitalize}", refresh: 10 %>
 <% end %>
