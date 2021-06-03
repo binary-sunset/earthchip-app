@@ -1,0 +1,56 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - './dbdata:/var/lib/postgresql/data'
+    env_file:
+      - .env.docker
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+  sidekiq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - app
+      - db
+      - redis
+      - mosquitto
+    volumes:
+      - .:/app
+    env_file:
+      - .env.docker
+    entrypoint: ./entrypoints/sidekiq-entrypoint.sh
+  app:
+    build: .
+    restart: always
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+      - redis
+      - mosquitto
+    env_file:
+      - .env.docker
+    volumes:
+      - .:/app
+  mosquitto:
+    image: 'eclipse-mosquitto:latest'
+    restart: always
+    ports:
+      - '1883:1883'
+    volumes:
+      - ./config:/mosquitto/config
+      - ./log:/mosquitto/log/
+      - ./data:/mosquitto/data/
+volumes:
+  dbdata:
