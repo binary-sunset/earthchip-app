@@ -43,3 +43,5 @@ yarn-debug.log*
 
 /dbdata
 /dbdata/*
+
+/config/credentials/production.key
