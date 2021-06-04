@@ -1,6 +1,8 @@
-<h1>This are all your devices</h1>
+<div class="mt-5">
+  <h1>Earthchip dashboard</h1>
+  <%= turbo_stream_from :devices %>
+  <%= turbo_frame_tag :devices, class: "grid-wrapper mt-5 mb-3" do %>
+    <%= render @devices %>
+  <% end %>
+</div>
 
-<%= turbo_stream_from :devices %>
-<%= turbo_frame_tag :devices, class: "grid-wrapper" do %>
-  <%= render @devices %>
-<% end %>

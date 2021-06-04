@@ -3,5 +3,5 @@
 <hr/>
 <% [:moisture, :temperature, :light, :humidity].each do |measurement| %>
   <h2><%= measurement.capitalize %></h2>
-  <%= area_chart charts_graph_stats_path(@device, measurement: measurement), xtitle: measurement.capitalize, ytitle: "Avg. #{measurement.capitalize}", refresh: 10 %>
+  <%= area_chart charts_graph_stats_path(@device, measurement: measurement), ytitle: "Avg. #{measurement.capitalize}", refresh: 10, max: 100, min: 0 %>
 <% end %>

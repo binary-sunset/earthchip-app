@@ -1,19 +1,24 @@
 <%= turbo_frame_tag dom_id(device) do %>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">
-        <%= turbo_frame_tag "device_#{device.id}_edit" do %>
-          <%= device.name %>
-          <%= link_to edit_device_path(device), class: 'card-link text-decoration-none' do %>
-            <i class="bi bi-pencil"></i>
-          <% end %>
-        <% end %>
-      </h5>
+  <div class="card p-3 mb-2">
+    <div>
+      <%= turbo_frame_tag "device_#{device.id}_edit" do %>
+        <div class="flex flex-row align-items-center justify-content-between">
+          <div class="icon"><i class="bi bi-cpu" style="font-size: 2rem;"></i></div>
+          <h4 class="mb-0">
+            <%= device.name %>
+            <%= link_to edit_device_path(device), class: 'card-link text-decoration-none' do %>
+              <i class="bi bi-pencil"></i>
+            <% end %>
+          </h4>
+        </div>
+      <% end %>
+    </div>
+    <div class="mt-5">
       <% [:temperature, :light, :humidity, :moisture].each do |measurement| %>
         <%= render 'device_stats/device_stats', device: device, measurement: measurement %>
       <% end %>
     </div>
-    <div class="card-footer">
+    <div class="mt-5">
       <%= link_to details_device_path(device), class: "card-link text-decoration-none", target: :_top do %>
         Details <i class="bi bi-clipboard-data"></i>
       <% end %>
